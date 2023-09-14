@@ -82,29 +82,37 @@
                                     <button
                                         class="btn cm_border bg-white"
                                         type="button">
-                                        <i class="fa fa-search ps-3 pe-3 search_btn"></i>
+                                        <i
+                                            class="fa fa-search ps-3 pe-3 search_btn"></i>
                                     </button>
                                 </span>
-                                <input class="form-control cm_border border-start-0 ms-n5"
+                                <input
+                                    class="form-control cm_border border-start-0 ms-n5"
                                     type="search"
                                     placeholder="Cerca o inizia una nuova chat"
                                     id="example-search-input"><!-- TO FIX MARGIN LEFT-->
                             </div>
                         </div>
-                        <div class="contacts overflow-y-auto">
+                        <div class="contacts overflow-y-scroll bg-white h-100">
 
-                            <div class="col-12 contact d-flex align-items-center bg-white ps-4"
+                            <div
+                                class="col-12 contact d-flex align-items-center bg-white ps-4"
                                 v-for="(contact, index) in contacts">
                                 <div class="contact_pic">
-                                    <img :src="contact.avatar" class="user_pic" alt="">
+                                    <img :src="contact.avatar" class="user_pic"
+                                        alt>
 
                                 </div>
 
-                                <div class="contact_info d-flex flex-column justify-content-center">
+                                <div
+                                    class="contact_info d-flex flex-column justify-content-center flex-grow-1">
                                     <h6 class="contact_name m-0">{{contact.name}}</h6>
-                                    <small class="last_message">Ultimo messaggio inviato</small>
-                                    
-                                    
+                                    <small class="last_message">Ultimo messaggio
+                                        inviato</small>
+
+                                </div>
+                                <div class="left_last_access align-self-start last_access pt-3 pe-2">
+                                    12:00
                                 </div>
 
                             </div>
@@ -112,18 +120,35 @@
                     </div>
 
                     <!-- RIGHT SIDE -->
-                    <div class="right col-8">
+                    <div class="right col-8 d-flex flex-column">
+                        <div class="col-12 d-flex justify-content-between align-items-center">
+                            <div class="d-flex">
+                                <img class="user_pic" :src="contacts[0].avatar" alt="" srcset="">
+                                <div
+                                    class="d-flex flex-column mt-3">
+                                    <h6 class="m-0">{{contacts[0].name}}</h6>
+                                    <p class="m-0 last_access">Ultimo accesso alle 12:00</p>
+                                </div>
 
-                        <img :src="contacts.avatar" alt>
+                            </div>
+                            <div class="chat_actions d-flex justify-content-between gap-4 align-items-center me-3 fs-2 search_btn">
+                                <i class="fa fa-search"></i>
+                                <i class="fa-solid fa-paperclip"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                        <div class="chat overflow-y-auto h-100">
+                            <div class="col-12"></div>
+
+                        </div>
+
                     </div>
 
-                </div>
+                </main>
 
-            </main>
+            </div>
 
-        </div>
-
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="./assets/js/main.js"></script>
-    </body>
-</html>
+            <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+            <script src="./assets/js/main.js"></script>
+        </body>
+    </html>

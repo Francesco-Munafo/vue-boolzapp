@@ -17,7 +17,6 @@
 }
 
 .bg_down {
-    background: var(--bz-app-bg-light);
     background: var(--bz-app-bg-light-gradient);
     height: 80%;
 
@@ -59,7 +58,7 @@
     font-weight: 500;
 }
 
-.notification_description p:last-of-type, .last_message{
+.notification_description p:last-of-type, .last_message, .last_access{
     color: gray;
 }
 
@@ -83,4 +82,8 @@
     height: 90px ;
     
     border-bottom: 0.1px solid var(--bz-app-bg-main);
+}
+
+.chat{
+    background-image: url(/assets/img/mine.jpg);
 }
