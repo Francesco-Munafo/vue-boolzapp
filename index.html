@@ -41,53 +41,75 @@
                     <!-- LEFT SIDE -->
                     <div
                         class="left col-4 border-end d-flex flex-column ">
-                        
-                    
-                        <div class="col-12 d-flex align-items-center justify-content-between">
+
+                        <div
+                            class="col-12 d-flex align-items-center justify-content-between">
 
                             <div class="user_io d-flex align-items-center">
-                               <img src="./assets/img/avatar_io.jpg"
-                                class="user_pic" alt>
-                            <h6 class="m-0">Sofia</h6> 
-                            </div>
-                            
-                            <div class="icons d-flex justify-content-around w-25 ">
-                                <i class="fa-solid fa-circle-notch fs-4"></i>
-                                <i class="fa-solid fa-message fs-4"></i>
-                                <i class="fa-solid fa-ellipsis-vertical fs-4 me-2"></i>
+                                <img src="./assets/img/avatar_io.jpg"
+                                    class="user_pic" alt>
+                                <h6 class="m-0">Sofia</h6>
                             </div>
 
-                            
+                            <div
+                                class="icons d-flex justify-content-around w-25 ">
+                                <i class="fa-solid fa-circle-notch fs-4"></i>
+                                <i class="fa-solid fa-message fs-4"></i>
+                                <i
+                                    class="fa-solid fa-ellipsis-vertical fs-4 me-2"></i>
+                            </div>
+
                         </div>
                         <div class="col-12">
                             <div class="notifications d-flex">
-                                <i class="fa-solid fa-bell-slash fs-4 bg-light rounded-circle p-2 m-3"></i>
-                                <div class="notification_description d-flex flex-column mt-3">
-                                    <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
-                                    <p class="m-0 text-decoration-underline">Attiva notifiche desktop</p>
+                                <i
+                                    class="fa-solid fa-bell-slash fs-4 bg-light rounded-circle p-2 m-3"></i>
+                                <div
+                                    class="notification_description d-flex flex-column mt-3">
+                                    <p class="m-0">Ricevi notifiche di nuovi
+                                        messaggi</p>
+                                    <p class="m-0 text-decoration-underline">Attiva
+                                        notifiche desktop</p>
                                 </div>
 
                             </div>
                         </div>
 
-                        <div class="col-12 p-2">
+                        <div class="col-12 p-2 searchbar">
 
                             <div class="input-group">
                                 <span class="input-group-append">
-                                    <button class="btn btn-outline-secondary bg-white border-0"  type="button">
-                                        <i class="fa fa-search"></i>
+                                    <button
+                                        class="btn cm_border bg-white"
+                                        type="button">
+                                        <i class="fa fa-search ps-3 pe-3 search_btn"></i>
                                     </button>
                                 </span>
-                                 <input class="form-control border-0 ms-n5" type="search" placeholder="Cerca o inizia una nuova chat" id="example-search-input"><!-- TO FIX MARGIN LEFT--> 
+                                <input class="form-control cm_border border-start-0 ms-n5"
+                                    type="search"
+                                    placeholder="Cerca o inizia una nuova chat"
+                                    id="example-search-input"><!-- TO FIX MARGIN LEFT-->
                             </div>
                         </div>
+                        <div class="contacts overflow-y-auto">
 
-                        <div class="col-12"></div>
-                    
+                            <div class="col-12 contact d-flex align-items-center bg-white ps-4"
+                                v-for="(contact, index) in contacts">
+                                <div class="contact_pic">
+                                    <img :src="contact.avatar" class="user_pic" alt="">
+
+                                </div>
+
+                                <div class="contact_info d-flex flex-column justify-content-center">
+                                    <h6 class="contact_name m-0">{{contact.name}}</h6>
+                                    <small class="last_message">Ultimo messaggio inviato</small>
+                                    
+                                    
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                    
-                    
-                    
 
                     <!-- RIGHT SIDE -->
                     <div class="right col-8">

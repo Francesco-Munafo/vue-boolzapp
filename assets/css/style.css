@@ -2,7 +2,7 @@
     --bz-app-bg-success:rgb(0 150 136);
     --bz-app-bg-light:rgb(230, 230, 210);
     --bz-app-bg-light-gradient: linear-gradient(180deg, rgba(230, 230, 210, 1) 0%, rgba(215, 219, 220, 1) 59%, rgba(210, 219, 230, 1) 100%);
-    --bz-app-bg-main: rgb(234, 234, 234);
+    --bz-app-bg-main: #eaeaea;
     --bz-app-icons: rgb(177, 177, 177);
     --bs-app-bg-notifications: rgb(142 218 252);
     
@@ -59,10 +59,28 @@
     font-weight: 500;
 }
 
-.notification_description p:last-of-type{
+.notification_description p:last-of-type, .last_message{
     color: gray;
+}
+
+.searchbar{
+    background-color: #fafafa;
+}
+
+.cm_border{
+    border: 1px solid #f3f3f3;
+}
+
+.search_btn{
+    color: #b9b9b9;
 }
 
 .ms-n5 {
     margin-left: -40px;
+}
+
+.contact{
+    height: 90px ;
+    
+    border-bottom: 0.1px solid var(--bz-app-bg-main);
 }
