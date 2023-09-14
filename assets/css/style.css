@@ -62,3 +62,7 @@
 .notification_description p:last-of-type{
     color: gray;
 }
+
+.ms-n5 {
+    margin-left: -40px;
+}
