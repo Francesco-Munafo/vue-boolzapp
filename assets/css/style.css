@@ -5,6 +5,8 @@
     --bz-app-bg-main: #eaeaea;
     --bz-app-icons: rgb(177, 177, 177);
     --bs-app-bg-notifications: rgb(142 218 252);
+    --bs-app-bg-msg-received: rgb(255, 255, 255);
+    --bs-app-bg-msg-sent: rgb(213, 249, 186);
     
 }
 
@@ -86,4 +88,35 @@
 
 .chat{
     background-image: url(/assets/img/mine.jpg);
+}
+
+.received{
+    background-color: var(--bs-app-bg-msg-received);
+    border-radius: 10px;
+    min-height: 50px;
+    width: 350px;
+    margin-top: 2rem;
+    margin-right: auto;
+    padding: 0.5rem 1rem ;
+    display: flex;
+    align-items: center;
+    
+    
+}
+
+.sent{
+    background-color: var(--bs-app-bg-msg-sent);
+    border-radius: 10px;
+    min-height: 50px;
+    width: 350px;
+    margin-top: 2rem;
+    margin-left: auto;
+    padding: 0.5rem 1rem ;
+    display: flex;
+    align-items: center;
+}
+
+.write{
+    padding: 0.5rem;
+    background-color: var(--bz-app-bg-main);
 }
