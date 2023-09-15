@@ -98,10 +98,10 @@
                         <div class="contacts overflow-y-hidden bg-white h-100">
                             <template v-for="(contact, index) in contacts">
                                 <div
-                                v-if="contact.name.toLowerCase().includes(userSearch.toLowerCase())"
-                                @click="showActive(index)"
-                                class="col-12 contact d-flex align-items-center ps-4"                                  
-                                :class="index == active ? 'active_chat' : '' ">
+                                    v-if="contact.name.toLowerCase().includes(userSearch.toLowerCase())"
+                                    @click="showActive(index)"
+                                    class="col-12 contact d-flex align-items-center ps-4"
+                                    :class="index == active ? 'active_chat' : '' ">
                                     <div class="contact_pic">
                                         <img :src="contact.avatar"
                                             class="user_pic"
@@ -118,7 +118,8 @@
                                     </div>
                                     <div
                                         class="left_last_access align-self-start last_access pt-3 pe-2">
-                                        {{messageTime(index, contact.messages.length - 1)}} 
+                                        {{messageTime(index,
+                                        contact.messages.length - 1)}}
                                     </div>
 
                                 </div>
@@ -151,36 +152,37 @@
                             </div>
                         </div>
                         <div
-                            class="chat overflow-y-auto h-100 d-flex flex-column justify-content-between">
-                            <div class="col-12 d-flex flex-column py-5 px-4">
+                            class="chat flex-grow-1 d-flex flex-column overflow-y-auto p-3">
+                            
 
                                 <div
                                     class="message d-flex justify-content-between"
                                     v-for="(message, i) in contacts[active].messages"
                                     :class="message.status === 'sent' ? 'sent' : 'received'">
-                                    <p>{{message.message}}</p>
-                                    <p class="message_time">{{messageTime(active, i)}}</p>
+                                    <p class="message_content">{{message.message}}</p>
+                                    <p class="message_time ">{{messageTime(active,
+                                        i)}}</p>
                                 </div>
 
-                            </div>
-                            <div class="write">
-                                <div class="input-group">
-                                    <button class="btn px-4" type="button"><i
-                                            class="fa-regular fa-face-smile fs-2 search_btn"></i></button>
-                                    <input type="text"
-                                        class="form-control rounded-3"
-                                        v-model="newMessage"
-                                        @keyup.enter="sendMessage()"
-                                        placeholder="Scrivi un messaggio"
-                                        aria-label="Scrivi un messaggio"
-                                        aria-describedby="button-addon2">
-                                    <button class="btn px-2" type="button"
-                                        id="button-addon2"><i
-                                            class="fa-solid fa-paper-plane fs-2 search_btn"></i></button>
-                                    <button class="btn px-4" type="button"><i
-                                            class="fa-solid fa-microphone fs-2 search_btn"></i></button>
-                                </div>
+                            
 
+                        </div>
+                        <div class="write">
+                            <div class="input-group">
+                                <button class="btn px-4" type="button"><i
+                                        class="fa-regular fa-face-smile fs-2 search_btn"></i></button>
+                                <input type="text"
+                                    class="form-control rounded-3"
+                                    v-model="newMessage"
+                                    @keyup.enter="sendMessage()"
+                                    placeholder="Scrivi un messaggio"
+                                    aria-label="Scrivi un messaggio"
+                                    aria-describedby="button-addon2">
+                                <button class="btn px-2" type="button"
+                                    id="button-addon2"><i
+                                        class="fa-solid fa-paper-plane fs-2 search_btn"></i></button>
+                                <button class="btn px-4" type="button"><i
+                                        class="fa-solid fa-microphone fs-2 search_btn"></i></button>
                             </div>
 
                         </div>

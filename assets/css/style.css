@@ -10,6 +10,9 @@
     
 }
 
+#app{
+    height: 100vh;
+}
 
 
 .bg_top {
@@ -102,6 +105,7 @@
     align-items: center;
     
     
+    
 }
 
 .sent{
@@ -114,11 +118,17 @@
     padding: 0.5rem 1rem ;
     display: flex;
     align-items: center;
+    
 }
 
 .write{
     padding: 0.5rem;
     background-color: var(--bz-app-bg-main);
+}
+
+.message_content{
+    max-width: 80%;
+    word-wrap: break-word;
 }
 
 .message_time{
