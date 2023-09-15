@@ -188,27 +188,44 @@ createApp({
         },
 
         sendMessage() {
-
+            
             const currentDate = new Date();
             const currentHours = currentDate.getHours();
             const currentMinutes = currentDate.getMinutes();
-            const messageTime = currentHours + ':' + currentMinutes
+            const messageTime = currentHours + ':' + currentMinutes;
             console.log('hai inviato');
-
+            
+            
             this.contacts[this.active].messages.push({
-
+                
                 date: messageTime,
                 message: this.newMessage,
                 status: 'sent'
+                
+            })
+            
+            setTimeout(this.chatAnswer, 1000, messageTime);
+
+         },
+
+        chatAnswer(time) {
+
+
+            console.log('risposta');
+            this.contacts[this.active].messages.push({
+
+                date: time,
+                message: 'Va bene',
+                status: 'received'
 
             })
         },
 
-        lastMessageTime(index){
+        lastMessageTime(index) {
             const messageDate = this.contacts[index].messages[this.contacts[index].messages.length - 1].date.split(' ');
-            console.log(messageDate);
+            //console.log(messageDate);
             const messageTime = messageDate[1].split(':');
-            console.log(messageTime);
+            //console.log(messageTime);
             return `${messageTime[0]}:${messageTime[1]}`
         }
     }
