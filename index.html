@@ -118,7 +118,7 @@
                                     </div>
                                     <div
                                         class="left_last_access align-self-start last_access pt-3 pe-2">
-                                        <!-- {{lastMessageTime(index)}} -->
+                                        {{messageTime(index, contact.messages.length - 1)}} 
                                     </div>
 
                                 </div>
@@ -156,10 +156,10 @@
 
                                 <div
                                     class="message d-flex justify-content-between"
-                                    v-for="message in contacts[active].messages"
+                                    v-for="(message, i) in contacts[active].messages"
                                     :class="message.status === 'sent' ? 'sent' : 'received'">
                                     <p>{{message.message}}</p>
-                                    <p class="message_time">{{message.date}}</p>
+                                    <p class="message_time">{{messageTime(active, i)}}</p>
                                 </div>
 
                             </div>

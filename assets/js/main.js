@@ -189,27 +189,26 @@ createApp({
         },
         dateGenerator() {
             const currentDate = new Date();
-            console.log(currentDate);
+            const day = currentDate.getDate();
+            const month = currentDate.getMonth();
+            const year = currentDate.getFullYear();
+            const hours = currentDate.getHours();
+            const minutes = currentDate.getMinutes();
+
+            return `${day}/${month}/${year} ${hours}:${minutes}`
         },
 
         sendMessage() {
 
-            const currentDate = new Date();
-            const currentHours = currentDate.getHours();
-            const currentMinutes = currentDate.getMinutes();
-            const messageTime = currentHours + ':' + currentMinutes;
-            console.log('hai inviato');
-
-
             this.contacts[this.active].messages.push({
 
-                date: messageTime,
+                date: this.dateGenerator(),
                 message: this.newMessage,
                 status: 'sent'
 
             })
 
-            setTimeout(this.chatAnswer, 1000, messageTime);
+            setTimeout(this.chatAnswer, 1000, this.dateGenerator());
 
         },
 
@@ -226,11 +225,12 @@ createApp({
             })
         },
 
-        lastMessageTime(index) {
-            const messageDate = this.contacts[index].messages[this.contacts[index].messages.length - 1].date.split(' ');
+        messageTime(contactIndex, messageIndex) {
+            const messageDate = this.contacts[contactIndex].messages[messageIndex].date.split(' '); //This is the last contact message date
             //console.log(messageDate);
             const messageTime = messageDate[1].split(':');
             //console.log(messageTime);
+            // const lastMessageDate = this.contacts[i].messages[this.contacts[index].message.length - 1].date.split(' ');
             return `${messageTime[0]}:${messageTime[1]}`
         },
 
