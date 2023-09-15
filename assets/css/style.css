@@ -87,7 +87,7 @@
 }
 
 .chat{
-    background-image: url(/assets/img/mine.jpg);
+    background-image: url(../img/mine.jpg);
 }
 
 .received{
@@ -119,4 +119,9 @@
 .write{
     padding: 0.5rem;
     background-color: var(--bz-app-bg-main);
+}
+
+
+.active_chat{
+    background-color: var(--bz-app-bg-main) ;
 }

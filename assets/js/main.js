@@ -4,6 +4,8 @@ const { createApp } = Vue
     data() {
       return {
 
+        active: 0,
+
         contacts: [
             {
                 name: 'Michele',
@@ -169,5 +171,18 @@ const { createApp } = Vue
         ]
 
       }
+    },
+    methods:{
+
+        showActive(index){
+            console.log(this.active);
+            console.log(index);
+            this.active = index
+            console.log(this.active);
+            console.log(index);
+            
+
+        }
+
     }
   }).mount('#app')
