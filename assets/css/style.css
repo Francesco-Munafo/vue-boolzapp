@@ -121,6 +121,12 @@
     background-color: var(--bz-app-bg-main);
 }
 
+.message_time{
+    font-size: 12px;
+    margin: 0;
+    align-self: flex-end;
+    
+}
 
 .active_chat{
     background-color: var(--bz-app-bg-main) ;
