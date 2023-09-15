@@ -6,6 +6,7 @@ createApp({
 
             active: 0,
             newMessage: '',
+            userSearch: '',
 
 
 
@@ -186,27 +187,31 @@ createApp({
 
 
         },
+        dateGenerator() {
+            const currentDate = new Date();
+            console.log(currentDate);
+        },
 
         sendMessage() {
-            
+
             const currentDate = new Date();
             const currentHours = currentDate.getHours();
             const currentMinutes = currentDate.getMinutes();
             const messageTime = currentHours + ':' + currentMinutes;
             console.log('hai inviato');
-            
-            
+
+
             this.contacts[this.active].messages.push({
-                
+
                 date: messageTime,
                 message: this.newMessage,
                 status: 'sent'
-                
+
             })
-            
+
             setTimeout(this.chatAnswer, 1000, messageTime);
 
-         },
+        },
 
         chatAnswer(time) {
 
@@ -227,6 +232,7 @@ createApp({
             const messageTime = messageDate[1].split(':');
             //console.log(messageTime);
             return `${messageTime[0]}:${messageTime[1]}`
-        }
+        },
+
     }
 }).mount('#app')

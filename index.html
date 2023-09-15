@@ -90,36 +90,39 @@
                                     class="form-control cm_border border-start-0 ms-n5"
                                     type="search"
                                     placeholder="Cerca o inizia una nuova chat"
-                                    id="example-search-input"><!-- TO FIX MARGIN LEFT-->
+                                    id="example-search-input"
+                                    v-model="userSearch"><!-- TO FIX MARGIN LEFT-->
                             </div>
                         </div>
                         <!-- CONTACTS REGION -->
-                        <div class="contacts overflow-y-scroll bg-white h-100">
-
-                            <div
-                                class="col-12 contact d-flex align-items-center ps-4"
-                                v-for="(contact, index) in contacts"
+                        <div class="contacts overflow-y-hidden bg-white h-100">
+                            <template v-for="(contact, index) in contacts">
+                                <div
+                                v-if="contact.name.toLowerCase().includes(userSearch.toLowerCase())"
                                 @click="showActive(index)"
+                                class="col-12 contact d-flex align-items-center ps-4"                                  
                                 :class="index == active ? 'active_chat' : '' ">
-                                <div class="contact_pic">
-                                    <img :src="contact.avatar" class="user_pic"
-                                        alt>
+                                    <div class="contact_pic">
+                                        <img :src="contact.avatar"
+                                            class="user_pic"
+                                            alt>
+
+                                    </div>
+
+                                    <div
+                                        class="contact_info d-flex flex-column justify-content-center flex-grow-1">
+                                        <h6 class="contact_name m-0">{{contact.name}}</h6>
+                                        <small class="last_message">{{contact.messages[contact.messages.length
+                                            - 1].message}}</small>
+
+                                    </div>
+                                    <div
+                                        class="left_last_access align-self-start last_access pt-3 pe-2">
+                                        <!-- {{lastMessageTime(index)}} -->
+                                    </div>
 
                                 </div>
-                                <!-- SINGLE CONTACT -->
-                                <div
-                                    class="contact_info d-flex flex-column justify-content-center flex-grow-1">
-                                    <h6 class="contact_name m-0">{{contact.name}}</h6>
-                                    <small class="last_message">{{contact.messages[contact.messages.length
-                                        - 1].message}}</small>
-
-                                </div>
-                                <div
-                                    class="left_last_access align-self-start last_access pt-3 pe-2">
-                                    <!-- {{lastMessageTime(index)}} -->
-                                </div>
-
-                            </div>
+                            </template>
                         </div>
                     </div>
 
@@ -135,8 +138,6 @@
                                     class="d-flex flex-column mt-3">
                                     <h6 class="m-0">{{contacts[active].name}}</h6>
                                     <p class="m-0 last_access">
-
-                                    
 
                                     </p>
                                 </div>
