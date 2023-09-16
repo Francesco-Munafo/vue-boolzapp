@@ -236,5 +236,11 @@ createApp({
             return `${messageTime[0]}:${messageTime[1]}`
         },
 
+        removeMessage(message){
+            console.log(message);
+            console.log('eliminato');
+            this.contacts[this.active].messages.splice(message, 1)
+        }
+
     }
 }).mount('#app')
