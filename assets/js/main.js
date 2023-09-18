@@ -243,9 +243,8 @@ createApp({
         removeMessage(message){
             console.log(message);
             console.log('eliminato');
-            if (this.contacts[this.active].messages.length > 0){
                 this.contacts[this.active].messages.splice(message, 1)
-            }
+            
             
         }
 
