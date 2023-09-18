@@ -96,7 +96,6 @@
 .received{
     background-color: var(--bs-app-bg-msg-received);
     border-radius: 10px;
-    min-height: 50px;
     width: 350px;
     margin-top: 2rem;
     margin-right: auto;
@@ -111,7 +110,6 @@
 .sent{
     background-color: var(--bs-app-bg-msg-sent);
     border-radius: 10px;
-    min-height: 50px;
     width: 350px;
     margin-top: 2rem;
     margin-left: auto;
@@ -129,6 +127,7 @@
 .message_content{
     max-width: 80%;
     word-wrap: break-word;
+    margin: 0.15rem;
 }
 
 .message_time{

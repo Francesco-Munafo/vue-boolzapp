@@ -8,6 +8,8 @@ createApp({
             newMessage: '',
             userSearch: '',
 
+            answers:['Va bene', 'Ok', 'Bene bene, tu?', 'Sto giocando alla play, tu?', 'Devo andare a fare la spesa', 'Scusami non posso parlare ora', 'No', 'Hey! Quanto tempo!', 'Hai visto Gerry Scotti che canta Eminem creato dalla AI?', 'Ci becchiamo su Discord?', 'Mangi da me stasera? Cucino io!', 'Jojo ha fatto un macello a casa', 'Voglio la pizza'],
+
 
 
             contacts: [
@@ -228,7 +230,7 @@ createApp({
             this.contacts[this.active].messages.push({
 
                 date: time,
-                message: 'Va bene',
+                message: this.answers[Math.floor(Math.random() * (this.answers.length))],
                 status: 'received'
 
             })

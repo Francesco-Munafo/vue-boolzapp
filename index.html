@@ -163,7 +163,7 @@
                                     :id="i + 1"
                                     :class="message.status === 'sent' ? 'sent' : 'received'">
                                     <p class="message_content">{{message.message}}</p>
-                                    <div class="d-flex flex-column justify-content-between">
+                                    <div class="d-flex flex-column justify-content-between h-100">
                                         <div class="dropdown">
                                             <button class="btn border-0 p-0 pb-2 ms-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                              <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -195,10 +195,10 @@
                                     placeholder="Scrivi un messaggio"
                                     aria-label="Scrivi un messaggio"
                                     aria-describedby="button-addon2">
-                                <button class="btn px-2" type="button"
-                                    id="button-addon2" @click="sendMessage()"><i
+                                <button class="btn px-4" type="button"
+                                    id="button-addon2" @click="sendMessage()" v-show="newMessage.trim() != ''"><i
                                         class="fa-solid fa-paper-plane fs-2 search_btn"></i></button>
-                                <button class="btn px-4" type="button"><i
+                                <button class="btn px-4" type="button" v-show="newMessage.trim() == ''"><i
                                         class="fa-solid fa-microphone fs-2 search_btn"></i></button>
                             </div>
 
