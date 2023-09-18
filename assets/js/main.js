@@ -10,7 +10,7 @@ createApp({
 
             answers: ['Va bene', 'Ok', 'Bene bene, tu?', 'Sto giocando alla play, tu?', 'Devo andare a fare la spesa', 'Scusami non posso parlare ora', 'No', 'Hey! Quanto tempo!', 'Hai visto Gerry Scotti che canta Eminem creato dalla AI?', 'Ci becchiamo su Discord?', 'Mangi da me stasera? Cucino io!', 'Jojo ha fatto un macello a casa', 'Voglio la pizza'],
 
-            recentActivity: 'Ultimo accesso di recente',
+            recentActivity: '',
 
 
             contacts: [
@@ -209,7 +209,9 @@ createApp({
         //Push input's text into chat array and changes the status of the user
         sendMessage() {
 
+            
             this.recentActivity = 'Online';
+            
 
 
             if (this.newMessage.trim() !== '') {
@@ -228,7 +230,7 @@ createApp({
                 setTimeout(this.chatAnswer, 2000, this.dateGenerator());
                 
                 setTimeout(() => {
-                    this.recentActivity = 'Ultimo accesso di recente'
+                    this.recentActivity = 'Ultimo accesso alle' + ' ' + this.messageTime(this.active, this.contacts[this.active].messages.length - 1);
                 }, 5000)
                 
                 this.newMessage = '';
@@ -300,5 +302,8 @@ createApp({
             });
         }
 
+    },
+    beforeMount(){
+        this.recentActivity = 'Ultimo accesso alle' + ' ' + this.messageTime(this.active, this.contacts[this.active].messages.length - 1);
     }
 }).mount('#app')
