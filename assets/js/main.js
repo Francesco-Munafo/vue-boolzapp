@@ -201,7 +201,7 @@ createApp({
         sendMessage() {
 
 
-            if (this.newMessage !== ''){
+            if (this.newMessage !== '' && this.newMessage.charAt(0) !== " "){
                this.contacts[this.active].messages.push({
 
                 date: this.dateGenerator(),
@@ -214,6 +214,8 @@ createApp({
 
             this.newMessage = ''; 
             }
+
+            this.newMessage = '';
             
 
         },
