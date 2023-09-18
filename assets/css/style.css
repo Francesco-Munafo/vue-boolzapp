@@ -140,3 +140,7 @@
 .active_chat{
     background-color: var(--bz-app-bg-main) ;
 }
+
+.chat_context_menu{
+    color: var(--bz-app-icons);
+}

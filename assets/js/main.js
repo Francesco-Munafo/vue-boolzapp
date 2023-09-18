@@ -300,6 +300,10 @@ createApp({
                     }
                 );
             });
+        },
+
+        deleteMessages(){
+            this.contacts[this.active].messages = [];
         }
 
     },
