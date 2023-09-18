@@ -201,7 +201,7 @@ createApp({
         sendMessage() {
 
 
-            if (this.newMessage !== '' && this.newMessage.charAt(0) !== " "){
+            if (this.newMessage.trim() !== ''){
                this.contacts[this.active].messages.push({
 
                 date: this.dateGenerator(),
@@ -216,6 +216,7 @@ createApp({
             }
 
             this.newMessage = '';
+            this.scrollToBottom();
             
 
         },
@@ -231,6 +232,8 @@ createApp({
                 status: 'received'
 
             })
+            
+            this.scrollToBottom();
         },
 
         messageTime(contactIndex, messageIndex) {
@@ -248,7 +251,20 @@ createApp({
                 this.contacts[this.active].messages.splice(message, 1)
             
             
-        }
+        },
+
+        scrollToBottom() {
+            const targetRef = this.$refs.myScrollTarget;
+            this.$nextTick(() => {
+              targetRef.scrollTo(
+                {
+                  top: targetRef.scrollHeight,
+                  left: 0,
+                  behavior: "smooth"
+                }
+              );
+            });
+          }
 
     }
 }).mount('#app')
