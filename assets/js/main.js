@@ -10,7 +10,7 @@ createApp({
 
             answers: ['Va bene', 'Ok', 'Bene bene, tu?', 'Sto giocando alla play, tu?', 'Devo andare a fare la spesa', 'Scusami non posso parlare ora', 'No', 'Hey! Quanto tempo!', 'Hai visto Gerry Scotti che canta Eminem creato dalla AI?', 'Ci becchiamo su Discord?', 'Mangi da me stasera? Cucino io!', 'Jojo ha fatto un macello a casa', 'Voglio la pizza'],
 
-            recentActivity: this.$refs.lastOnline,
+            recentActivity: 'Ultimo accesso di recente',
 
 
             contacts: [
@@ -222,18 +222,23 @@ createApp({
                 })
 
                 this.$nextTick(() => {
-                    this.recentActivity = 'Sta scrivendo'
+                    this.recentActivity = 'Sta scrivendo...';
                 })
 
                 setTimeout(this.chatAnswer, 2000, this.dateGenerator());
                 
+                setTimeout(() => {
+                    this.recentActivity = 'Ultimo accesso di recente'
+                }, 5000)
                 
                 this.newMessage = '';
+
+
             }
             
-            //this.recentActivity = 'Online';
+            
             this.newMessage = '';
-            //this.recentActivity = 'Sta scrivendo'
+            
             
             this.scrollToBottom();
             
@@ -245,15 +250,20 @@ createApp({
             
 
             console.log('risposta');
+            this.recentActivity = 'Online'
             this.contacts[this.active].messages.push({
 
                 date: time,
                 message: this.answers[Math.floor(Math.random() * (this.answers.length))],
                 status: 'received'
 
-            })
+            }
+            )
 
-            this.recentActivity = 'Online';
+            //this.recentActivity = 'Online';
+
+            
+
             this.scrollToBottom();
         },
 
