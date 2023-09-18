@@ -301,12 +301,13 @@ createApp({
                 );
             });
         },
-
+        //This function removes all messages from the active chat. You can invoke it by clicking on the 3 dots on top of the current chat and by selecting "Elimina messaggi"
         deleteMessages(){
             this.contacts[this.active].messages = [];
         }
 
     },
+    //This function updates the last access for the current chat
     beforeMount(){
         this.recentActivity = 'Ultimo accesso alle' + ' ' + this.messageTime(this.active, this.contacts[this.active].messages.length - 1);
     }
