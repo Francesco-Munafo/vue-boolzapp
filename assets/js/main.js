@@ -200,7 +200,9 @@ createApp({
 
         sendMessage() {
 
-            this.contacts[this.active].messages.push({
+
+            if (this.newMessage !== ''){
+               this.contacts[this.active].messages.push({
 
                 date: this.dateGenerator(),
                 message: this.newMessage,
@@ -210,7 +212,9 @@ createApp({
 
             setTimeout(this.chatAnswer, 1000, this.dateGenerator());
 
-            this.newMessage = '';
+            this.newMessage = ''; 
+            }
+            
 
         },
 
@@ -232,14 +236,17 @@ createApp({
             //console.log(messageDate);
             const messageTime = messageDate[1].split(':');
             //console.log(messageTime);
-            // const lastMessageDate = this.contacts[i].messages[this.contacts[index].message.length - 1].date.split(' ');
+        
             return `${messageTime[0]}:${messageTime[1]}`
         },
 
         removeMessage(message){
             console.log(message);
             console.log('eliminato');
-            this.contacts[this.active].messages.splice(message, 1)
+            if (this.contacts[this.active].messages.length > 0){
+                this.contacts[this.active].messages.splice(message, 1)
+            }
+            
         }
 
     }

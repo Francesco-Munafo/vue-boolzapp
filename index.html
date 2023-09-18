@@ -112,15 +112,17 @@
                                     <div
                                         class="contact_info d-flex flex-column justify-content-center flex-grow-1">
                                         <h6 class="contact_name m-0">{{contact.name}}</h6>
-                                        <small class="last_message">{{contact.messages[contact.messages.length
+                                        <small class="last_message" v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length
                                             - 1].message}}</small>
+                                            <small class="last_message" v-else></small>
 
                                     </div>
                                     <div
-                                        class="left_last_access align-self-start last_access pt-3 pe-2">
+                                        class="left_last_access align-self-start last_access pt-3 pe-2" v-if="contact.messages.length > 0" >
                                         {{messageTime(index,
                                         contact.messages.length - 1)}}
                                     </div>
+                                    <div class="left_last_access align-self-start last_access pt-3 pe-2" v-else></div>
 
                                 </div>
                             </template>
@@ -139,7 +141,7 @@
                                     class="d-flex flex-column mt-3">
                                     <h6 class="m-0">{{contacts[active].name}}</h6>
                                     <p class="m-0 last_access">
-
+                                        Ultimo accesso di recente 
                                     </p>
                                 </div>
 
@@ -194,7 +196,7 @@
                                     aria-label="Scrivi un messaggio"
                                     aria-describedby="button-addon2">
                                 <button class="btn px-2" type="button"
-                                    id="button-addon2"><i
+                                    id="button-addon2" @click="sendMessage()"><i
                                         class="fa-solid fa-paper-plane fs-2 search_btn"></i></button>
                                 <button class="btn px-4" type="button"><i
                                         class="fa-solid fa-microphone fs-2 search_btn"></i></button>
