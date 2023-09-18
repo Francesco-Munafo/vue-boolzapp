@@ -8,8 +8,9 @@ createApp({
             newMessage: '',
             userSearch: '',
 
-            answers:['Va bene', 'Ok', 'Bene bene, tu?', 'Sto giocando alla play, tu?', 'Devo andare a fare la spesa', 'Scusami non posso parlare ora', 'No', 'Hey! Quanto tempo!', 'Hai visto Gerry Scotti che canta Eminem creato dalla AI?', 'Ci becchiamo su Discord?', 'Mangi da me stasera? Cucino io!', 'Jojo ha fatto un macello a casa', 'Voglio la pizza'],
+            answers: ['Va bene', 'Ok', 'Bene bene, tu?', 'Sto giocando alla play, tu?', 'Devo andare a fare la spesa', 'Scusami non posso parlare ora', 'No', 'Hey! Quanto tempo!', 'Hai visto Gerry Scotti che canta Eminem creato dalla AI?', 'Ci becchiamo su Discord?', 'Mangi da me stasera? Cucino io!', 'Jojo ha fatto un macello a casa', 'Voglio la pizza'],
 
+            recentActivity: this.$refs.lastOnline,
 
 
             contacts: [
@@ -176,10 +177,13 @@ createApp({
                 }
             ]
 
+
+
         }
     },
     methods: {
 
+        //Change the active parameter making it equals to the index
         showActive(index) {
             console.log(this.active);
             console.log(index);
@@ -189,6 +193,8 @@ createApp({
 
 
         },
+
+        //This function create a date based on the current date(EN Format) and formats it returning IT format
         dateGenerator() {
             const currentDate = new Date();
             const day = currentDate.getDate().toString().padStart(2, '0');
@@ -200,31 +206,43 @@ createApp({
             return `${day}/${month}/${year} ${hours}:${minutes}`
         },
 
+        //Push input's text into chat array and changes the status of the user
         sendMessage() {
 
+            this.recentActivity = 'Online';
 
-            if (this.newMessage.trim() !== ''){
-               this.contacts[this.active].messages.push({
 
-                date: this.dateGenerator(),
-                message: this.newMessage,
-                status: 'sent'
+            if (this.newMessage.trim() !== '') {
+                this.contacts[this.active].messages.push({
 
-            })
+                    date: this.dateGenerator(),
+                    message: this.newMessage,
+                    status: 'sent'
 
-            setTimeout(this.chatAnswer, 1000, this.dateGenerator());
+                })
 
-            this.newMessage = ''; 
+                this.$nextTick(() => {
+                    this.recentActivity = 'Sta scrivendo'
+                })
+
+                setTimeout(this.chatAnswer, 2000, this.dateGenerator());
+                
+                
+                this.newMessage = '';
             }
-
+            
+            //this.recentActivity = 'Online';
             this.newMessage = '';
+            //this.recentActivity = 'Sta scrivendo'
+            
             this.scrollToBottom();
             
-
+            
         },
 
+        //Function for auto random answers
         chatAnswer(time) {
-
+            
 
             console.log('risposta');
             this.contacts[this.active].messages.push({
@@ -234,39 +252,43 @@ createApp({
                 status: 'received'
 
             })
-            
+
+            this.recentActivity = 'Online';
             this.scrollToBottom();
         },
 
+        //This function gets the date from the array and gets only hours and minutes
         messageTime(contactIndex, messageIndex) {
             const messageDate = this.contacts[contactIndex].messages[messageIndex].date.split(' '); //This is the last contact message date
             //console.log(messageDate);
             const messageTime = messageDate[1].split(':');
             //console.log(messageTime);
-        
+
             return `${messageTime[0]}:${messageTime[1]}`
         },
 
-        removeMessage(message){
+        //Function to remove message using context menu
+        removeMessage(message) {
             console.log(message);
             console.log('eliminato');
-                this.contacts[this.active].messages.splice(message, 1)
-            
-            
+            this.contacts[this.active].messages.splice(message, 1)
+
+
         },
 
+        //Function that keeps the scroll height always on the bottom of the chat
         scrollToBottom() {
             const targetRef = this.$refs.myScrollTarget;
             this.$nextTick(() => {
-              targetRef.scrollTo(
-                {
-                  top: targetRef.scrollHeight,
-                  left: 0,
-                  behavior: "smooth"
-                }
-              );
+                targetRef.scrollTo(
+                    {
+                        top: targetRef.scrollHeight,
+                        left: 0,
+                        behavior: "smooth"
+                    }
+                );
             });
-          }
+        }
 
     }
 }).mount('#app')
